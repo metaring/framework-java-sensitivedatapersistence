@@ -28,7 +28,7 @@ final class SensitiveDataRepresentationTransformer {
         return transform(inputData, params != null ? params : Tools.FACTORY_TEXT_SERIES.create(), inputFunction, params == null || params.isEmpty());
     }
 
-    private static final  DataRepresentation transform(DataRepresentation inputData, TextSeries params, Function<String, String> inputFunction, boolean force) {
+    private static final DataRepresentation transform(DataRepresentation inputData, TextSeries params, Function<String, String> inputFunction, boolean force) {
         if(inputData.hasLength()) {
             int length = inputData.length();
             for (int i=0; i<length; i++) {
