@@ -66,6 +66,34 @@ public class SensitiveDataInfo implements GeneratedCoreType {
         return sensitiveDataInfo;
     }
 
+    public static SensitiveDataInfo fromObject(Object object) {
+
+        if(object == null) {
+            return null;
+        }
+
+        DataRepresentation dataRepresentation = Tools.FACTORY_DATA_REPRESENTATION.fromObject(object);
+
+        DataRepresentation data = null;
+        if(dataRepresentation.hasProperty("data")) {
+            try {
+                data = dataRepresentation.get("data");
+            } catch (Exception e) {
+            }
+        }
+
+        TextSeries params = null;
+        if(dataRepresentation.hasProperty("params")) {
+            try {
+                params = dataRepresentation.getTextSeries("params");
+            } catch (Exception e) {
+            }
+        }
+
+        SensitiveDataInfo sensitiveDataInfo = create(data, params);
+        return sensitiveDataInfo;
+    }
+
     public DataRepresentation toDataRepresentation() {
         DataRepresentation dataRepresentation = Tools.FACTORY_DATA_REPRESENTATION.create();
         if (data != null) {

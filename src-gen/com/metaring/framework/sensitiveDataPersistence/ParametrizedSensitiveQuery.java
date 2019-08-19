@@ -66,6 +66,34 @@ public class ParametrizedSensitiveQuery implements GeneratedCoreType {
         return parametrizedSensitiveQuery;
     }
 
+    public static ParametrizedSensitiveQuery fromObject(Object object) {
+
+        if(object == null) {
+            return null;
+        }
+
+        DataRepresentation dataRepresentation = Tools.FACTORY_DATA_REPRESENTATION.fromObject(object);
+
+        String query = null;
+        if(dataRepresentation.hasProperty("query")) {
+            try {
+                query = dataRepresentation.getText("query");
+            } catch (Exception e) {
+            }
+        }
+
+        TextSeries params = null;
+        if(dataRepresentation.hasProperty("params")) {
+            try {
+                params = dataRepresentation.getTextSeries("params");
+            } catch (Exception e) {
+            }
+        }
+
+        ParametrizedSensitiveQuery parametrizedSensitiveQuery = create(query, params);
+        return parametrizedSensitiveQuery;
+    }
+
     public DataRepresentation toDataRepresentation() {
         DataRepresentation dataRepresentation = Tools.FACTORY_DATA_REPRESENTATION.create();
         if (query != null) {

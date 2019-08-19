@@ -1,16 +1,20 @@
 package com.metaring.framework.sensitiveDataPersistence;
 
-import com.metaring.framework.SysKB;
 import java.util.concurrent.CompletableFuture;
 import com.metaring.framework.functionality.AbstractFunctionality;
 import com.metaring.framework.functionality.GeneratedFunctionality;
+import com.metaring.framework.functionality.FunctionalityInfo;
 import com.metaring.framework.sensitiveDataPersistence.ParametrizedSensitiveQuery;
 import com.metaring.framework.type.DataRepresentation;
 
-public abstract class QueryWithParamsFunctionality extends AbstractFunctionality implements GeneratedFunctionality {
+abstract class QueryWithParamsFunctionality extends AbstractFunctionality implements GeneratedFunctionality {
 
-    protected QueryWithParamsFunctionality(SysKB sysKB) {
-        super(sysKB, SensitiveDataPersistenceFunctionalitiesManager.QUERY_WITH_PARAMS, DataRepresentation.class);
+    static final FunctionalityInfo INFO = FunctionalityInfo.create("com.metaring.framework.sensitiveDataPersistence.queryWithParams", true, false, false, "com.metaring.framework.sensitiveDataPersistence.ParametrizedSensitiveQuery", "com.metaring.framework.type.DataRepresentation");
+
+    static final QueryWithParamsFunctionality INSTANCE = new QueryWithParamsFunctionalityImpl();
+
+    protected QueryWithParamsFunctionality() {
+        super(INFO, DataRepresentation.class);
     }
 
     @Override
@@ -111,9 +115,5 @@ public abstract class QueryWithParamsFunctionality extends AbstractFunctionality
     @Override
     protected final Object getInputFromJsonWork(String inputJson) {
         return ParametrizedSensitiveQuery.fromJson(inputJson);
-    }
-
-    protected static final QueryWithParamsFunctionality create(SysKB sysKB) {
-        return new QueryWithParamsFunctionalityImpl(sysKB);
     }
 }

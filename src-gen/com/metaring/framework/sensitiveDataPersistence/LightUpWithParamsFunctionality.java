@@ -1,16 +1,20 @@
 package com.metaring.framework.sensitiveDataPersistence;
 
-import com.metaring.framework.SysKB;
 import java.util.concurrent.CompletableFuture;
 import com.metaring.framework.functionality.AbstractFunctionality;
 import com.metaring.framework.functionality.GeneratedFunctionality;
+import com.metaring.framework.functionality.FunctionalityInfo;
 import com.metaring.framework.sensitiveDataPersistence.SensitiveDataInfo;
 import com.metaring.framework.type.DataRepresentation;
 
-public abstract class LightUpWithParamsFunctionality extends AbstractFunctionality implements GeneratedFunctionality {
+abstract class LightUpWithParamsFunctionality extends AbstractFunctionality implements GeneratedFunctionality {
 
-    protected LightUpWithParamsFunctionality(SysKB sysKB) {
-        super(sysKB, SensitiveDataPersistenceFunctionalitiesManager.LIGHT_UP_WITH_PARAMS, DataRepresentation.class);
+    static final FunctionalityInfo INFO = FunctionalityInfo.create("com.metaring.framework.sensitiveDataPersistence.lightUpWithParams", true, false, false, "com.metaring.framework.sensitiveDataPersistence.SensitiveDataInfo", "com.metaring.framework.type.DataRepresentation");
+
+    static final LightUpWithParamsFunctionality INSTANCE = new LightUpWithParamsFunctionalityImpl();
+
+    protected LightUpWithParamsFunctionality() {
+        super(INFO, DataRepresentation.class);
     }
 
     @Override
@@ -111,9 +115,5 @@ public abstract class LightUpWithParamsFunctionality extends AbstractFunctionali
     @Override
     protected final Object getInputFromJsonWork(String inputJson) {
         return SensitiveDataInfo.fromJson(inputJson);
-    }
-
-    protected static final LightUpWithParamsFunctionality create(SysKB sysKB) {
-        return new LightUpWithParamsFunctionalityImpl(sysKB);
     }
 }

@@ -13,21 +13,21 @@ import com.metaring.framework.persistence.OperationResult;
 
 public class SensitiveDataPersistenceFunctionalitiesManager extends FunctionalitiesManager implements GeneratedFunctionalitiesManager {
 
-    public static final FunctionalityInfo LIGHT_UP = FunctionalityInfo.create("com.metaring.framework.sensitiveDataPersistence.lightUp", true, false, false, "com.metaring.framework.type.DataRepresentation", "com.metaring.framework.type.DataRepresentation");
+    public static final FunctionalityInfo LIGHT_UP = LightUpFunctionality.INFO;
 
-    public static final FunctionalityInfo LIGHT_UP_WITH_PARAMS = FunctionalityInfo.create("com.metaring.framework.sensitiveDataPersistence.lightUpWithParams", true, false, false, "com.metaring.framework.sensitiveDataPersistence.SensitiveDataInfo", "com.metaring.framework.type.DataRepresentation");
+    public static final FunctionalityInfo LIGHT_UP_WITH_PARAMS = LightUpWithParamsFunctionality.INFO;
 
-    public static final FunctionalityInfo QUERY = FunctionalityInfo.create("com.metaring.framework.sensitiveDataPersistence.query", true, false, false, "java.lang.String", "com.metaring.framework.type.DataRepresentation");
+    public static final FunctionalityInfo QUERY = QueryFunctionality.INFO;
 
-    public static final FunctionalityInfo QUERY_WITH_PARAMS = FunctionalityInfo.create("com.metaring.framework.sensitiveDataPersistence.queryWithParams", true, false, false, "com.metaring.framework.sensitiveDataPersistence.ParametrizedSensitiveQuery", "com.metaring.framework.type.DataRepresentation");
+    public static final FunctionalityInfo QUERY_WITH_PARAMS = QueryWithParamsFunctionality.INFO;
 
-    public static final FunctionalityInfo TARNISH = FunctionalityInfo.create("com.metaring.framework.sensitiveDataPersistence.tarnish", true, false, false, "com.metaring.framework.type.DataRepresentation", "com.metaring.framework.type.DataRepresentation");
+    public static final FunctionalityInfo TARNISH = TarnishFunctionality.INFO;
 
-    public static final FunctionalityInfo TARNISH_WITH_PARAMS = FunctionalityInfo.create("com.metaring.framework.sensitiveDataPersistence.tarnishWithParams", true, false, false, "com.metaring.framework.sensitiveDataPersistence.SensitiveDataInfo", "com.metaring.framework.type.DataRepresentation");
+    public static final FunctionalityInfo TARNISH_WITH_PARAMS = TarnishWithParamsFunctionality.INFO;
 
-    public static final FunctionalityInfo UPDATE = FunctionalityInfo.create("com.metaring.framework.sensitiveDataPersistence.update", true, false, false, "java.lang.String", "com.metaring.framework.persistence.OperationResult");
+    public static final FunctionalityInfo UPDATE = UpdateFunctionality.INFO;
 
-    public static final FunctionalityInfo UPDATE_WITH_PARAMS = FunctionalityInfo.create("com.metaring.framework.sensitiveDataPersistence.updateWithParams", true, false, false, "com.metaring.framework.sensitiveDataPersistence.ParametrizedSensitiveQuery", "com.metaring.framework.persistence.OperationResult");
+    public static final FunctionalityInfo UPDATE_WITH_PARAMS = UpdateWithParamsFunctionality.INFO;
 
     public static final CompletableFuture<DataRepresentation> lightUp(DataRepresentation dataRepresentation) {
         return call(LIGHT_UP, LightUpFunctionality.class, getCallingFunctionality(), dataRepresentation, result -> result);

@@ -1,15 +1,19 @@
 package com.metaring.framework.sensitiveDataPersistence;
 
-import com.metaring.framework.SysKB;
 import java.util.concurrent.CompletableFuture;
 import com.metaring.framework.functionality.AbstractFunctionality;
 import com.metaring.framework.functionality.GeneratedFunctionality;
+import com.metaring.framework.functionality.FunctionalityInfo;
 import com.metaring.framework.type.DataRepresentation;
 
-public abstract class QueryFunctionality extends AbstractFunctionality implements GeneratedFunctionality {
+abstract class QueryFunctionality extends AbstractFunctionality implements GeneratedFunctionality {
 
-    protected QueryFunctionality(SysKB sysKB) {
-        super(sysKB, SensitiveDataPersistenceFunctionalitiesManager.QUERY, DataRepresentation.class);
+    static final FunctionalityInfo INFO = FunctionalityInfo.create("com.metaring.framework.sensitiveDataPersistence.query", true, false, false, "java.lang.String", "com.metaring.framework.type.DataRepresentation");
+
+    static final QueryFunctionality INSTANCE = new QueryFunctionalityImpl();
+
+    protected QueryFunctionality() {
+        super(INFO, DataRepresentation.class);
     }
 
     @Override
@@ -110,9 +114,5 @@ public abstract class QueryFunctionality extends AbstractFunctionality implement
     @Override
     protected final Object getInputFromJsonWork(String inputJson) {
         return inputJson == null ? null : inputJson.trim().isEmpty() ? null : inputJson.equals("null") ? null : inputJson.substring(1, inputJson.length() - 1);
-    }
-
-    protected static final QueryFunctionality create(SysKB sysKB) {
-        return new QueryFunctionalityImpl(sysKB);
     }
 }
