@@ -18,7 +18,7 @@
 
     <groupId>com.metaring</groupId>
     <artifactId>framework-java-sensitivedatapersistence</artifactId>
-    <version>1.5.7-SNAPSHOT</version>
+    <version>1.5.8-SNAPSHOT</version>
 
     <name>MetaRing Framework Java Sensitive Data Persistence</name>
     <description>Module for Sensitive Data Persistence</description>
@@ -49,7 +49,7 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>framework-java-persistence</artifactId>
-            <version>1.5.6</version>
+            <version>1.5.7</version>
         </dependency>
     </dependencies>
 
